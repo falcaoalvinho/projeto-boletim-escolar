@@ -35,11 +35,10 @@
         border-collapse:collapse;
     }
 
-/* Sombra de caixa para a tabela */
-    table {
+/* Sombra de caixa para Tabela e Botões do Projeto*/
+    table, button{
         box-shadow: rgba(0, 0, 0, 0.4) 0px 0px 30px;
     }
-
 
 /* Estilização das fontes dentro do cabeçalho e corpo da tabela (tags 'th' e 'td') */
     th, td {
@@ -66,7 +65,6 @@
         font-weight: 600;
         color: var(--Branco);
     }
-
 
 /* Estilizações gerais para botões */
     button {
@@ -102,6 +100,7 @@
         background-color: var(--Vermelho);
     }
 
+/* Estilização das Itens de Lista para listas da Div de gestão da Tabela */
     li {
         display: flex;
         flex-direction: row;
@@ -112,22 +111,14 @@
         color: var(--CinzaClaro2);
     }
 
+/* Estilização das Checkboxes da Lista de controle de notas*/
     li input {
         width: 20px;
         height: 20px;
 
-        border-style: solid;
-        border-width: 1px;
-        border-color: var(--CinzaClaro2);
-
         color: var(--CinzaEscuro);
         margin: 0px 5px 0px 0px;
     }
-
-    li input::checked {
-        background: var(--Preto);
-    }
-
 
 /* Variaveis para uso de Cores da Página */
     :root{
