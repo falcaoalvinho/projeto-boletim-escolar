@@ -9,7 +9,6 @@
 <body>
     <h1>projeto-boletim-escolar</h1> <!-- Título do Projeto -->
 
-    
     <table> <!-- Começo da Tabela -->
       <thead> <!-- Começo do Cabeçalho -->
         <tr>
@@ -27,25 +26,25 @@
           <td><input type="text"></td>
           <td><input type="number"></td>
           <td><input type="output"></td>
-          <td><button onclick="">Excluir</button></td>
+          <td><button onclick="ExcluirAluno()">Excluir</button></td>
         </tr>
       </tbody>
     </table>
 
-    <div>
+    <div> <!-- Caixa dos elementos para gestão da Tabela-->
       <ul> <!-- Lista de butões para gestão da Tabela -->
-        <li><button onclick="">Verificar</button></li>
-        <li><button onclick="">Adicionar Aluno</button></li>
-        <li><button onclick="">Adicionar Nota</button></li>
+        <li><button onclick="VerificarNotas()">Verificar</button></li>
+        <li><button onclick="GerarTabela()">Gerar Tabela</button></li>
+        <li><button onclick="AdicionarAluno()">Adicionar Aluno</button></li>
       </ul>
 
-      <ul>
-        <li><input type="checkbox" class="checkbox">Português</li>
-        <li><input type="checkbox" class="checkbox">Matemática</li>
-        <li><input type="checkbox" class="checkbox">História</li>
-        <li><input type="checkbox" class="checkbox">Geografia</li>
-        <li><input type="checkbox" class="checkbox">Ciências</li>
-        <li><input type="checkbox" class="checkbox">E. Fisíca</li>
+      <ul> <!-- Lista de Inputs do tipo CheckBox para gestão de Notas da Tabela-->
+        <li><input type="checkbox" value="Português">Português</li>
+        <li><input type="checkbox" value="Matemática">Matemática</li>
+        <li><input type="checkbox" value="História">História</li>
+        <li><input type="checkbox" value="Geografia">Geografia</li>
+        <li><input type="checkbox" value="Ciências">Ciências</li>
+        <li><input type="checkbox" value="E. Fisíca">E. Fisíca</li>
       </ul>
     </div>
     <script src="script.js"></script>
