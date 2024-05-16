@@ -1,0 +1,143 @@
+/* Import da fonte 'Poppins' */
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+/* Para desatribuir valores de outras páginas */
+    * {
+        padding: 0px;
+        margin: 0px;
+    }
+
+/* Estilizações de alta repetição dentro da tag 'body' */
+    body {
+        flex: 1;
+        display: flex;
+        align-items: flex-start;
+        flex-direction: column;
+
+        padding: 50px;
+
+        font-family: 'Poppins', sans-serif;
+        color: var(--CinzaClaro2);
+
+        background-color: var(--CinzaEscuro);
+    }
+
+/* Margem para Títilo do projeto (tag 'h1") */
+    h1 {
+        margin: 0px 0px 30px 0px ;
+    }
+
+/* Definição do estilo da borda para a tabela */
+    table, th, td {
+        border-style: solid;
+        border-width: 1px;
+        border-color: var(--CinzaClaro2);
+        border-collapse:collapse;
+    }
+
+/* Sombra de caixa para a tabela */
+    table {
+        box-shadow: rgba(0, 0, 0, 0.4) 0px 0px 30px;
+    }
+
+
+/* Estilização das fontes dentro do cabeçalho e corpo da tabela (tags 'th' e 'td') */
+    th, td {
+        padding: 15px;
+
+        font-weight: 500;
+        font-size: 20px;
+        color: var(--Branco);
+    }
+
+/* Mudança de cor para blocos do cabeçalho */
+    th {
+        background-color: var(--Preto);
+    }
+
+/* Estilização dos campos de entrada de dados via tags 'input' */
+    input {
+        border:none;
+        outline: none;
+        
+        background-color: var(--CinzaEscuro);
+
+        font-size: 16px;
+        font-weight: 600;
+        color: var(--Branco);
+    }
+
+
+/* Estilizações gerais para botões */
+    button {
+        padding: 15px;
+
+        border-width: 1px;
+        border-style: solid;
+        border-color: var(--CinzaClaro2);
+        border-radius: 10px;
+
+        font-size: 16px;
+        font-weight: 600;
+        color: var(--CinzaClaro2);
+
+        background-color: var(--Preto);
+    }
+
+/* Estilização da Lista de botões */
+    ul {
+        margin: 30px 0px;
+
+        display: flex;
+        flex-direction: row;
+
+        gap: 30px;
+
+        list-style: none;
+    }
+
+/* Estilização dos butões de dentro da tabela */
+    table button {
+        color: var(--Branco);
+        background-color: var(--Vermelho);
+    }
+
+    li {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+
+        font-size: 20px;
+        color: var(--CinzaClaro2);
+    }
+
+    li input {
+        width: 20px;
+        height: 20px;
+
+        border-style: solid;
+        border-width: 1px;
+        border-color: var(--CinzaClaro2);
+
+        color: var(--CinzaEscuro);
+        margin: 0px 5px 0px 0px;
+    }
+
+    li input::checked {
+        background: var(--Preto);
+    }
+
+
+/* Variaveis para uso de Cores da Página */
+    :root{
+        --Preto: #010409;
+        --CinzaEscuro: #0d1117;
+        --CinzaClaro: #484f58;
+        --CinzaClaro2: #6e7681;
+        --Branco: #fff;
+
+        --Vermelho: rgb(255, 25, 25);
+        --Verde: rgb(25, 255, 25);
+        --Amarelo: rgb(255, 250, 25);
+    }
