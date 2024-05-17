@@ -109,16 +109,42 @@ function ExcluirAluno(index) {
 }
 
 function VerificarNotas() {
+    RowsList = TheadTbody[1].querySelectorAll('tr');
+
+    let notas;
+    let dadosAluno;
+    for(let i = 0; i <= RowsList.length - 1; i++){
+        notas = [];
+        dadosAluno = RowsList[i].querySelectorAll('input');
+        for (let j = 0; j <= ListaMaterias.length - 1; j++){
+            console.log('FUNFA')
+            notas.push(dadosAluno[j + 1].valueAsNumber);
+        }
+
+        mediaAluno = 0;
+
+        for (let n = 0; n <= notas.length - 1; n++){
+            mediaAluno += notas[n];
+        }
+        if (mediaAluno > 60){
+            dadosAluno[dadosAluno.length - 1].value = "APROVADO";
+        }
+        else if (mediaAluno > 40) {
+            dadosAluno[dadosAluno.length - 1].value = "RECUPERADO";
+        }
+        else {
+            dadosAluno[dadosAluno.length - 1].value = "REPROVADO";
+        }
+    }
 }
 
 function GerarTabela() {
     if (tabelaON == true) {
+        RowsList = document.querySelectorAll('tr');
 
         TheadTbody[0].removeChild(RowsList[0]);
 
-        RowsList = document.querySelectorAll('tr');
-
-        for (let x = 0; x <= RowsList.length - 1; x++){
+        for (let x = 1; x <= RowsList.length - 1; x++){
             TheadTbody[1].removeChild(RowsList[x]);
         }
         RowsList = document.querySelectorAll('tr');
