@@ -3,6 +3,110 @@ const Tabela = document.querySelector('table');
 var CheckBoxList = document.querySelectorAll('li > input');
 var RowsList;
 
+var ListaMaterias = [];
+
+var CheckPortugues  = CheckBoxList[0];
+var CheckMatematica = CheckBoxList[1];
+var CheckHistoria   = CheckBoxList[2];
+var CheckGeografia  = CheckBoxList[3];
+var CheckCiencias   = CheckBoxList[4];
+var CheckEFisica    = CheckBoxList[5];
+
+CheckPortugues.addEventListener('change', () => {
+    if(CheckPortugues.checked) {
+        ListaMaterias.push(CheckPortugues.value);
+    }
+    else {
+        let listaAuxiliar = []
+        for (let iterador in ListaMaterias){
+            if (ListaMaterias[iterador] != CheckPortugues.value){
+                listaAuxiliar.push(ListaMaterias[iterador]);
+            }
+        }
+        ListaMaterias = listaAuxiliar;
+    }
+})
+
+CheckMatematica.addEventListener('change', () => {
+    if(CheckMatematica.checked) {
+        ListaMaterias.push(CheckMatematica.value);
+    }
+    else {
+        let listaAuxiliar = []
+        for (let iterador in ListaMaterias){
+            if (ListaMaterias[iterador] != CheckMatematica.value){
+                listaAuxiliar.push(ListaMaterias[iterador]);
+            }
+        }
+        ListaMaterias = listaAuxiliar;
+        console.log(ListaMaterias);
+    }
+})
+
+CheckHistoria.addEventListener('change', () => {
+    if(CheckHistoria.checked) {
+        ListaMaterias.push(CheckHistoria.value);
+    }
+    else {
+        let listaAuxiliar = []
+        for (let iterador in ListaMaterias){
+            if (ListaMaterias[iterador] != CheckHistoria.value){
+                listaAuxiliar.push(ListaMaterias[iterador]);
+            }
+        }
+        ListaMaterias = listaAuxiliar;
+        console.log(ListaMaterias);
+    }
+})
+
+CheckGeografia.addEventListener('change', () => {
+    if(CheckGeografia.checked) {
+        ListaMaterias.push(CheckGeografia.value);
+    }
+    else {
+        let listaAuxiliar = []
+        for (let iterador in ListaMaterias){
+            if (ListaMaterias[iterador] != CheckGeografia.value){
+                listaAuxiliar.push(ListaMaterias[iterador]);
+            }
+        }
+        ListaMaterias = listaAuxiliar;
+        console.log(ListaMaterias);
+    }
+})
+
+CheckCiencias.addEventListener('change', () => {
+    if(CheckCiencias.checked) {
+        ListaMaterias.push(CheckCiencias.value);
+    }
+    else {
+        let listaAuxiliar = []
+        for (let iterador in ListaMaterias){
+            if (ListaMaterias[iterador] != CheckCiencias.value){
+                listaAuxiliar.push(ListaMaterias[iterador]);
+            }
+        }
+        ListaMaterias = listaAuxiliar;
+        console.log(ListaMaterias);
+    }
+})
+
+CheckEFisica.addEventListener('change', () => {
+    if(CheckEFisica.checked) {
+        ListaMaterias.push(CheckEFisica.value);
+    }
+    else {
+        let listaAuxiliar = []
+        for (let iterador in ListaMaterias){
+            if (ListaMaterias[iterador] != CheckEFisica.value){
+                listaAuxiliar.push(ListaMaterias[iterador]);
+            }
+        }
+        ListaMaterias = listaAuxiliar;
+        console.log(ListaMaterias);
+    }
+})
+
 function ExcluirAluno() {
     console.log("ExcluirAluno() foi chamada!")
 }
@@ -13,11 +117,13 @@ function VerificarNotas() {
 
 function GerarTabela() {
     console.log("GerarTabela() foi chamada!")
+
+    console.log(ListaMaterias);
 }
 
 function AdicionarAluno() {
     console.log("AdicionarAluno() foi chamada!")
-    
+
     var RowsList = document.querySelectorAll('tr');
 
     let ultimaLinha = RowsList[RowsList.length - 1].querySelectorAll('td'); 
