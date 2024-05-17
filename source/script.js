@@ -20,7 +20,7 @@ CheckPortugues.addEventListener('change', () => {
         ListaMaterias.push(CheckPortugues.value);
     }
     else {
-        let listaAuxiliar = []
+        let listaAuxiliar = [];
         for (let iterador in ListaMaterias){
             if (ListaMaterias[iterador] != CheckPortugues.value){
                 listaAuxiliar.push(ListaMaterias[iterador]);
@@ -29,13 +29,12 @@ CheckPortugues.addEventListener('change', () => {
         ListaMaterias = listaAuxiliar;
     }
 })
-
 CheckMatematica.addEventListener('change', () => {
     if(CheckMatematica.checked) {
         ListaMaterias.push(CheckMatematica.value);
     }
     else {
-        let listaAuxiliar = []
+        let listaAuxiliar = [];
         for (let iterador in ListaMaterias){
             if (ListaMaterias[iterador] != CheckMatematica.value){
                 listaAuxiliar.push(ListaMaterias[iterador]);
@@ -44,13 +43,12 @@ CheckMatematica.addEventListener('change', () => {
         ListaMaterias = listaAuxiliar;
     }
 })
-
 CheckHistoria.addEventListener('change', () => {
     if(CheckHistoria.checked) {
         ListaMaterias.push(CheckHistoria.value);
     }
     else {
-        let listaAuxiliar = []
+        let listaAuxiliar = [];
         for (let iterador in ListaMaterias){
             if (ListaMaterias[iterador] != CheckHistoria.value){
                 listaAuxiliar.push(ListaMaterias[iterador]);
@@ -59,13 +57,12 @@ CheckHistoria.addEventListener('change', () => {
         ListaMaterias = listaAuxiliar;
     }
 })
-
 CheckGeografia.addEventListener('change', () => {
     if(CheckGeografia.checked) {
         ListaMaterias.push(CheckGeografia.value);
     }
     else {
-        let listaAuxiliar = []
+        let listaAuxiliar = [];
         for (let iterador in ListaMaterias){
             if (ListaMaterias[iterador] != CheckGeografia.value){
                 listaAuxiliar.push(ListaMaterias[iterador]);
@@ -74,13 +71,12 @@ CheckGeografia.addEventListener('change', () => {
         ListaMaterias = listaAuxiliar;
     }
 })
-
 CheckCiencias.addEventListener('change', () => {
     if(CheckCiencias.checked) {
         ListaMaterias.push(CheckCiencias.value);
     }
     else {
-        let listaAuxiliar = []
+        let listaAuxiliar = [];
         for (let iterador in ListaMaterias){
             if (ListaMaterias[iterador] != CheckCiencias.value){
                 listaAuxiliar.push(ListaMaterias[iterador]);
@@ -89,13 +85,12 @@ CheckCiencias.addEventListener('change', () => {
         ListaMaterias = listaAuxiliar;
     }
 })
-
 CheckEFisica.addEventListener('change', () => {
     if(CheckEFisica.checked) {
         ListaMaterias.push(CheckEFisica.value);
     }
     else {
-        let listaAuxiliar = []
+        let listaAuxiliar = []; 
         for (let iterador in ListaMaterias){
             if (ListaMaterias[iterador] != CheckEFisica.value){
                 listaAuxiliar.push(ListaMaterias[iterador]);
@@ -105,16 +100,18 @@ CheckEFisica.addEventListener('change', () => {
     }
 })
 
-function ExcluirAluno() {
-    console.log("ExcluirAluno() foi chamada!")
+function ExcluirAluno(index) {
+    RowsList = document.querySelectorAll('tr');
+    TheadTbody[1].removeChild(RowsList[index]);
+    ContadorAlunos --;
+    console.log(TheadTbody[1].children);
+    return GerarTabela();
 }
 
 function VerificarNotas() {
-    console.log("VerificarNotas() foi chamada!")
 }
 
 function GerarTabela() {
-    console.log("GerarTabela() foi chamada!")
     if (tabelaON == true) {
 
         TheadTbody[0].removeChild(RowsList[0]);
@@ -167,7 +164,6 @@ function GerarTabela() {
         TheadTbody[1].appendChild(NovaLinha);
         RowsList = document.querySelectorAll('tr');
 
-        console.log(RowsList)
         let colunaID = document.createElement('td');
         colunaID.innerText = iterador;
 
@@ -200,7 +196,7 @@ function GerarTabela() {
     
         let colunaExcluir = document.createElement('td');
         let novoButton = document.createElement('button');
-        novoButton.setAttribute('onclick', 'ExcluirAluno()');
+        novoButton.setAttribute('onclick', `ExcluirAluno(${RowsList.length - 1})`);
         novoButton.innerHTML = 'Excluir';
 
         RowsList[iterador].appendChild(colunaExcluir);
@@ -210,8 +206,6 @@ function GerarTabela() {
 }
 
 function AdicionarAluno() {
-    console.log("AdicionarAluno() foi chamada!")
-    
     ContadorAlunos++;
 
     if (tabelaON == false){
@@ -256,7 +250,7 @@ function AdicionarAluno() {
 
         let colunaExcluir = document.createElement('td');
         let novoButton = document.createElement('button');
-        novoButton.setAttribute('onclick', 'ExcluirAluno()');
+        novoButton.setAttribute('onclick', `ExcluirAluno(${RowsList.length -1})`);
         novoButton.innerText = "Excluir";
 
         NovaLinha.appendChild(colunaExcluir);
