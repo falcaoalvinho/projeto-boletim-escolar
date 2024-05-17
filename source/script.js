@@ -1,4 +1,7 @@
+var tabelaON = false;
+var ContadorAlunos = 1;
 const Tabela = document.querySelector('table');
+const TheadTbody = Tabela.querySelectorAll('thead, tbody');
 
 var CheckBoxList = document.querySelectorAll('li > input');
 var RowsList;
@@ -39,7 +42,6 @@ CheckMatematica.addEventListener('change', () => {
             }
         }
         ListaMaterias = listaAuxiliar;
-        console.log(ListaMaterias);
     }
 })
 
@@ -55,7 +57,6 @@ CheckHistoria.addEventListener('change', () => {
             }
         }
         ListaMaterias = listaAuxiliar;
-        console.log(ListaMaterias);
     }
 })
 
@@ -71,7 +72,6 @@ CheckGeografia.addEventListener('change', () => {
             }
         }
         ListaMaterias = listaAuxiliar;
-        console.log(ListaMaterias);
     }
 })
 
@@ -87,7 +87,6 @@ CheckCiencias.addEventListener('change', () => {
             }
         }
         ListaMaterias = listaAuxiliar;
-        console.log(ListaMaterias);
     }
 })
 
@@ -103,7 +102,6 @@ CheckEFisica.addEventListener('change', () => {
             }
         }
         ListaMaterias = listaAuxiliar;
-        console.log(ListaMaterias);
     }
 })
 
@@ -117,55 +115,151 @@ function VerificarNotas() {
 
 function GerarTabela() {
     console.log("GerarTabela() foi chamada!")
+    if (tabelaON == true) {
 
-    console.log(ListaMaterias);
+        TheadTbody[0].removeChild(RowsList[0]);
+
+        RowsList = document.querySelectorAll('tr');
+
+        for (let x = 0; x <= RowsList.length - 1; x++){
+            TheadTbody[1].removeChild(RowsList[x]);
+        }
+        RowsList = document.querySelectorAll('tr');
+
+        let NovaLinha = document.createElement('tr');
+        TheadTbody[0].appendChild(NovaLinha);
+    }
+    else {
+        let NovaLinha = document.createElement('tr');
+        TheadTbody[0].appendChild(NovaLinha);
+    }
+
+    RowsList = document.querySelectorAll('tr');
+
+    let colunaID = document.createElement('th');
+    colunaID.innerText = "ID";
+    RowsList[0].appendChild(colunaID);
+
+    let colunaNome = document.createElement('th')
+    colunaNome.innerText = "Nome";
+    RowsList[0].appendChild(colunaNome);
+
+    let colunaNota;
+    for (let iterador = 0; iterador <= ListaMaterias.length - 1; iterador++){
+        if(ListaMaterias[0] != undefined){
+            colunaNota = document.createElement('th');
+            colunaNota.innerText = ListaMaterias[iterador];
+            
+            RowsList[0].appendChild(colunaNota);
+            }
+        }
+
+    let colunaSituacao = document.createElement('th');
+    colunaSituacao.innerText = "Situação";
+    RowsList[0].appendChild(colunaSituacao);
+
+    let colunaExcluir = document.createElement('th');
+    RowsList[0].appendChild(colunaExcluir);
+
+    for (let iterador = 1; iterador <= ContadorAlunos; iterador++){
+
+        NovaLinha = document.createElement('tr');
+        TheadTbody[1].appendChild(NovaLinha);
+        RowsList = document.querySelectorAll('tr');
+
+        console.log(RowsList)
+        let colunaID = document.createElement('td');
+        colunaID.innerText = iterador;
+
+        RowsList[iterador].appendChild(colunaID);
+    
+        let colunaNome = document.createElement('td');
+        let novoInput = document.createElement('input');
+        novoInput.setAttribute('type', 'text');
+        RowsList[iterador].appendChild(colunaNome);
+        colunaNome.appendChild(novoInput);
+    
+        let colunaNota;
+        for (let x = 0; x <= ListaMaterias.length - 1; x++){
+            if(ListaMaterias[0] != undefined){
+                colunaNota = document.createElement('td');
+                novoInput = document.createElement('input');
+                novoInput.setAttribute('type', 'number');
+        
+                RowsList[iterador].appendChild(colunaNota);
+                colunaNota.appendChild(novoInput);
+            }
+        }
+    
+        let colunaSituacao = document.createElement('td');
+        novoInput = document.createElement('input');
+        novoInput.setAttribute('type', 'output');
+
+        RowsList[iterador].appendChild(colunaSituacao);
+        colunaSituacao.appendChild(novoInput);
+    
+        let colunaExcluir = document.createElement('td');
+        let novoButton = document.createElement('button');
+        novoButton.setAttribute('onclick', 'ExcluirAluno()');
+        novoButton.innerHTML = 'Excluir';
+
+        RowsList[iterador].appendChild(colunaExcluir);
+        colunaExcluir.appendChild(novoButton);
+    }
+    tabelaON = true;
 }
 
 function AdicionarAluno() {
     console.log("AdicionarAluno() foi chamada!")
+    
+    ContadorAlunos++;
 
-    var RowsList = document.querySelectorAll('tr');
-
-    let ultimaLinha = RowsList[RowsList.length - 1].querySelectorAll('td'); 
-
-    let colunaId = document.createElement('td');
-    var NovaLinha = document.createElement('tr');
-
-    colunaId.innerText = parseInt(ultimaLinha[0].innerText) + 1;
-
-    Tabela.appendChild(NovaLinha);
-    NovaLinha.appendChild(colunaId);
-
-    let colunaNome = document.createElement('td')
-    let novoInput = document.createElement('input');
-    novoInput.setAttribute('type', 'text');
-
-    NovaLinha.appendChild(colunaNome);
-    colunaNome.appendChild(novoInput);
-
-    let colunaNota;
-
-    for (let iterador = 0; iterador < 1; iterador ++){
-        colunaNota = document.createElement('td');
-        novoInput = document.createElement('input');
-        novoInput.setAttribute('type', 'number');
-
-        NovaLinha.appendChild(colunaNota);
-        colunaNota.appendChild(novoInput);
+    if (tabelaON == false){
+        alert("Por Favor gere uma tabela primeiro.");
     }
+    else {
+        RowsList = document.querySelectorAll('tr');
 
-    let colunaSituacao = document.createElement('td');
-    novoInput = document.createElement('input');
-    novoInput.setAttribute('type', 'output');
+        let colunaId = document.createElement('td');
+        let NovaLinha = document.createElement('tr');
 
-    NovaLinha.appendChild(colunaSituacao);
-    colunaSituacao.appendChild(novoInput);
+        colunaId.innerText = ContadorAlunos;
 
-    let colunaExcluir = document.createElement('td');
-    let novoButton = document.createElement('button');
-    novoButton.setAttribute('onclick', 'ExcluirAluno()');
-    novoButton.innerText = "Excluir";
+        TheadTbody[1].appendChild(NovaLinha);
+        NovaLinha.appendChild(colunaId);
 
-    NovaLinha.appendChild(colunaExcluir);
-    colunaExcluir.appendChild(novoButton);
+        let colunaNome = document.createElement('td')
+        let novoInput = document.createElement('input');
+        novoInput.setAttribute('type', 'text');
+
+        TheadTbody[1].appendChild(NovaLinha);
+        NovaLinha.appendChild(colunaNome);
+        colunaNome.appendChild(novoInput);
+
+        let colunaNota;
+
+        for (let iterador = 0; iterador < ListaMaterias.length; iterador ++){
+            colunaNota = document.createElement('td');
+            novoInput = document.createElement('input');
+            novoInput.setAttribute('type', 'number');
+
+            NovaLinha.appendChild(colunaNota);
+            colunaNota.appendChild(novoInput);
+        }
+
+        let colunaSituacao = document.createElement('td');
+        novoInput = document.createElement('input');
+        novoInput.setAttribute('type', 'output');
+
+        NovaLinha.appendChild(colunaSituacao);
+        colunaSituacao.appendChild(novoInput);
+
+        let colunaExcluir = document.createElement('td');
+        let novoButton = document.createElement('button');
+        novoButton.setAttribute('onclick', 'ExcluirAluno()');
+        novoButton.innerText = "Excluir";
+
+        NovaLinha.appendChild(colunaExcluir);
+        colunaExcluir.appendChild(novoButton);
+    }
 }
